@@ -1,0 +1,12 @@
+<p class="auto">Hi, hola {asdf}, my name is {name}, soy {name}, y cnt es {cnt}, how are you</p>
+<p class="auto">Counter {cnt}</p>
+<button onclick="state.cnt++">Increment</button>
+<button onclick="state.name += 'a'">AAA</button>
+<script>
+  const state = {
+    name: 'Hector',
+    cnt: 0,
+    asdf: 'asdfasdf'
+  }
+</script>
+<script>(()=>{let e=state,r=Object.entries(e),t=Object.fromEntries(r.map(([e])=>[e,[]])),f=/{([^}]*)}/g,n=document.getElementsByClassName("auto");r.forEach(([r])=>delete e[r]),r.forEach(([r,f])=>{e[`_${r}`]=f,Object.defineProperty(e,r,{set:function(f){e[`_${r}`]=f,t[r].forEach(e=>e())},get:function(){return e[`_${r}`]}})}),Array.from(n).forEach(r=>{let n=r.innerHTML;if("string"==typeof n){let o=Array.from(n.matchAll(f)),a=Array.from(new Set(o.map(e=>e[1]))).filter(r=>void 0!==e[r]),i=()=>{r.innerHTML=n.replace(f,(...r)=>e[r[1]]??r[0])};a.forEach(e=>{t[e].push(i)}),i()}})})();</script>
